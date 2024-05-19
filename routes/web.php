@@ -3,6 +3,7 @@
 use App\Livewire\ServiceDetails;
 use App\Livewire\ShowHome;
 use App\Livewire\ShowServices;
+use App\Livewire\ShowTeamPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', ShowHome::class)->name('home.view');
 Route::get('/services', ShowServices::class)->name('services.view');
 Route::get('/service/{id}', ServiceDetails::class)->name('service.details');
+Route::get('/team', ShowTeamPage::class)->name('team.view');

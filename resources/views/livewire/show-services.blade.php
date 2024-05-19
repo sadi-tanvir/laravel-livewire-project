@@ -5,7 +5,7 @@
                 <div class="col-8 mx-auto text-center">
                     <h2 class="mb-3 text-capitalize">Our Services</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-                        <li class="list-inline-item"><a href="index.html">Home</a>
+                        <li class="list-inline-item"><a href="{{route("home.view")}}"  wire:navigate>Home</a>
                         </li>
                         <li class="list-inline-item">/ &nbsp; <a href="services.html">Services</a>
                         </li>
@@ -67,16 +67,7 @@
             <div class="row justify-content-center">
                 @if ($services->isNotEmpty())
                     @foreach ($services as $service)
-                        <div class="icon-box-item text-center col-lg-4 col-md-6 mb-4">
-                            <div class="rounded shadow py-5 px-4">
-                                <div class="icon"> <i class="fas fa-user"></i>
-                                </div>
-                                <h3 class="mb-3">{{ $service->title }}</h3>
-                                <p class="mb-4">{{ $service->description }}</p> <a
-                                    class="btn btn-sm btn-outline-primary" href="service-details.html">View Details <i
-                                        class="las la-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
+                        <x-service-card :service="$service" />
                     @endforeach
                 @endif
             </div>
