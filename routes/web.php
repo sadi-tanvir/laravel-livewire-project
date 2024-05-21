@@ -1,9 +1,9 @@
 <?php
 
-use App\Livewire\ServiceDetails;
-use App\Livewire\ShowHome;
-use App\Livewire\ShowServices;
-use App\Livewire\ShowTeamPage;
+use App\Livewire\Counter;
+use App\Livewire\HomePage;
+use App\Livewire\Login;
+use App\Livewire\Todo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ShowHome::class)->name('home.view');
-Route::get('/services', ShowServices::class)->name('services.view');
-Route::get('/service/{id}', ServiceDetails::class)->name('service.details');
-Route::get('/team', ShowTeamPage::class)->name('team.view');
+Route::get('/', HomePage::class)->name('home.view');
+Route::get('/counter', Counter::class)->name('counter.view');
+Route::get('/login/{email}/{password}/{mobile?}', Login::class)->name('login.view');
+Route::get('/to-do', Todo::class)->name('todo.view');
