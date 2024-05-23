@@ -2,24 +2,37 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Login extends Component
 {
-    public $userEmail = '';
-    public $userPassword = '';
+    public $userEmail = '', $userPassword = '', $remember = '';
 
+    protected $rules = [
+        'userEmail' => "required | email",
+        'userPassword' => "required | min:5",
+        'remember' => "required"
+    ];
 
     public function render()
     {
         return view('livewire.login');
     }
 
-    public function login(){
-        $this->validate([
-            'email' => "required | email",
-            'password' => "required"
-        ]);
-        dd([$this->userEmail, $this->userPassword]);
+    public function updated()
+    {
+        $this->validate();
+    }
+
+    public function login()
+    {
+        $this->validate();
+        if(!Auth::attempt(['email'=>$this->userEmail, 'password' => $this->userPassword], $this->remember)){
+
+        session()->flash("error", "Email or Password not correct!");
+        }else {
+            session()->flash("success");
+        }
     }
 }
