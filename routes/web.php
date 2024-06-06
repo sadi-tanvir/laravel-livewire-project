@@ -3,6 +3,7 @@
 use App\Livewire\Counter;
 use App\Livewire\HomePage;
 use App\Livewire\Login;
+use App\Livewire\Posts;
 use App\Livewire\Todo;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::get('/', HomePage::class)->name('home.view');
 Route::get('/counter', Counter::class)->name('counter.view');
 Route::get('/login', Login::class)->name('login.view');
 Route::get('/to-do', Todo::class)->name('todo.view');
+Route::get('/posts', Posts::class)->name('posts.view');

@@ -25,14 +25,21 @@ class Login extends Component
         $this->validate();
     }
 
-    public function login()
-    {
+
+    public function save() {
         $this->validate();
+        $this->login();
+    }
+
+    protected function login()
+    {
         if(!Auth::attempt(['email'=>$this->userEmail, 'password' => $this->userPassword], $this->remember)){
 
         session()->flash("error", "Email or Password not correct!");
         }else {
             session()->flash("success");
+            $this->redirect('/', navigate:true);
         }
     }
+
 }
